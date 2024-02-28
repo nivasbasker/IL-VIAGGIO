@@ -68,6 +68,10 @@ public abstract class Passenger {
         return enrolledTourPackage;
     }
 
+    public double getPassengerNumber() {
+        return passengerNumber;
+    }
+
     public List<Activity> getEnrolledActivities() {
         if (enrolledTourPackage == null) return new ArrayList<>();
 
