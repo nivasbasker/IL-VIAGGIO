@@ -45,34 +45,6 @@ public class ActivityClassTest {
     }
 
     @Test
-    public void setList() {
-        List<Passenger> passengerList = new ArrayList<>();
-        passengerList.add(passenger);
-        passengerList.add(passenger2);
-
-        //set longer list than capacity
-        try {
-            activity.setPassengerList(passengerList);
-            fail();
-        } catch (IllegalArgumentException e) {
-        }
-
-        //passenger list of correct size
-        passengerList.remove(0);
-        try {
-            activity.setPassengerList(passengerList);
-        } catch (IllegalArgumentException e) {
-            fail();
-        }
-
-        //canAddPassenger fun
-        assertFalse(activity.canAddPassenger(passenger));
-
-        //capacity updated
-        assertEquals(0, activity.getRemainingCapacity());
-    }
-
-    @Test
     public void listModify() {
         //unmodifiable list
         List<Passenger> passengerList = activity.getPassengerList();

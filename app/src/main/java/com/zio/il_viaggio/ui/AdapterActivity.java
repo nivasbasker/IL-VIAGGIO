@@ -22,10 +22,10 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.ViewHo
     private final boolean type;
     private final Passenger passenger;
 
-    public AdapterActivity(Context context, List<Activity> activityList, boolean type) {
+    public AdapterActivity(Context context, List<Activity> activityList) {
         this.context = context;
         this.activityList = activityList;
-        this.type = type;
+        this.type = true;
         passenger = null;
     }
 
@@ -45,14 +45,16 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.name.setText(activityList.get(position).getActivityName());
-        holder.desc.setText(activityList.get(position).getDescription());
+        Activity activity = activityList.get(position);
+
+        holder.name.setText(activity.getActivityName());
+        holder.desc.setText(activity.getDescription());
         if (type) {
-            holder.seats.setText("Seats left : " + activityList.get(position).getRemainingCapacity());
-            holder.cost.setText("Costs : " + activityList.get(position).getCost());
+            holder.seats.setText("Seats left : " + activity.getRemainingCapacity());
+            holder.cost.setText("Costs : " + activity.getCost());
         } else {
-            holder.cost.setText(activityList.get(position).getDestination().getDestinationName());
-            holder.seats.setText("paid : " + passenger.getCostOfActivity(activityList.get(position)));
+            holder.cost.setText(activity.getDestination().getDestinationName());
+            holder.seats.setText("paid : " + passenger.getCostOfActivity(activity));
         }
 
     }
@@ -69,10 +71,9 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.activityName);
-            seats = itemView.findViewById(R.id.activitySeat);
-            seats = itemView.findViewById(R.id.activitySeat);
             desc = itemView.findViewById(R.id.activityDesc);
             cost = itemView.findViewById(R.id.activityCost);
+            seats = itemView.findViewById(R.id.activitySeat);
         }
     }
 }

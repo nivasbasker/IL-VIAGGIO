@@ -43,6 +43,7 @@ public class PassengerClassTest {
         assertEquals(45.0, passenger1.getCurrentBalance(), 0.01);
         assertEquals(0, passenger1.getEnrolledActivities().size());
     }
+
     @Test
     public void enrollPackage() {
         //book package
@@ -52,6 +53,7 @@ public class PassengerClassTest {
         //book more than one package
         assertFalse(passenger1.enrollInTourPackage(tourPackage1));
     }
+
     @Test
     public void enrollActivity() {
         //enroll activity before package
@@ -61,7 +63,7 @@ public class PassengerClassTest {
         } catch (IllegalArgumentException ignore) {
         }
 
-        //activity out of package
+        //activity activity out of package
         try {
             passenger1.enrollInActivity(activity3);
             fail();
@@ -77,6 +79,8 @@ public class PassengerClassTest {
             fail();
         } catch (IllegalArgumentException ignore) {
         }
+
+        passenger1.printDetails();
     }
 
     @Test

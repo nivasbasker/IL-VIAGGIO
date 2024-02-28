@@ -5,6 +5,10 @@ public class GoldPassenger extends Passenger {
         super(passengerName, passengerNumber, currentBalance, PassengerType.GOLD);
     }
 
+    /**
+     * @param activity Non Null
+     * @return 90% of the cost of activity (GOLD PASSENGER)
+     */
     @Override
     public double getCostOfActivity(Activity activity) {
         return 0.9 * activity.getCost();

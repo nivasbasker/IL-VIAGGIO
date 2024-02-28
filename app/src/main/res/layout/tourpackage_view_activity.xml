@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity2">
+    tools:context=".ui.TourPackageViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:padding="10dp"
-            android:text="All Passengers"
+            android:text="All Tour Packages"
             android:textStyle="bold" />
 
         <com.google.android.material.button.MaterialButton
@@ -25,15 +25,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="open1"
-            android:text="TourPackage View" />
+            android:text="Passengers View" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/passengerView"
+        android:id="@+id/toursView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
 
 </LinearLayout>

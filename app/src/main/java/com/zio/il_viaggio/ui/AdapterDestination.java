@@ -33,9 +33,10 @@ public class AdapterDestination extends RecyclerView.Adapter<AdapterDestination.
     @Override
     public void onBindViewHolder(@NonNull AdapterDestination.ViewHolder holder, int position) {
 
-        holder.name.setText(destinationList.get(position).getDestinationName());
-        holder.recyclerView.setAdapter(
-                new AdapterActivity(context, destinationList.get(position).getAvailableActivities(), true));
+        Destination destination = destinationList.get(position);
+        holder.name.setText(destination.getDestinationName());
+        holder.activitiesView.setAdapter(
+                new AdapterActivity(context, destination.getAvailableActivities()));
     }
 
     @Override
@@ -46,12 +47,12 @@ public class AdapterDestination extends RecyclerView.Adapter<AdapterDestination.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
-        RecyclerView recyclerView;
+        RecyclerView activitiesView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.destinationName);
-            recyclerView = itemView.findViewById(R.id.activityView);
+            activitiesView = itemView.findViewById(R.id.activityView);
         }
     }
 }

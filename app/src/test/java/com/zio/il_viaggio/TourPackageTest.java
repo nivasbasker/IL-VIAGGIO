@@ -35,13 +35,14 @@ public class TourPackageTest {
     @Test
     public void checkInit() {
 
-        //check for proper init
+        //check for proper initialization
         assertEquals("TestPackage", tourPackage.getPackageName());
         assertEquals(2, tourPackage.getTotalDestinations());
         assertEquals(3, tourPackage.getPassengerCapacity());
         assertTrue(tourPackage.getItinerary().contains(destination2));
         assertTrue(tourPackage.getItinerary().contains(destination));
 
+        tourPackage.printItinerary();
     }
 
     @Test
@@ -74,5 +75,7 @@ public class TourPackageTest {
         //check current state after enrollment
         assertEquals(0, tourPackage.getRemainingCapacity());
         assertFalse(tourPackage.canAddPassenger(passenger2));
+
+        tourPackage.printPassengerList();
     }
 }

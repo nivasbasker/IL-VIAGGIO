@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Each passenger has a name and a passenger number.
- * A passenger can be a standard, gold or premium passenger.
+ * Each passenger object has a unique name and a passenger number.
+ * A passenger can be of standard, gold or premium passenger-type only.
  */
 public abstract class Passenger {
+
 
     public enum PassengerType {
         STANDARD, GOLD, PREMIUM
@@ -20,6 +21,14 @@ public abstract class Passenger {
     protected double currentBalance;
     protected TourPackage enrolledTourPackage;
 
+    /**
+     * Constructor of passenger, creates a fresh new passenger without any package enrolled
+     *
+     * @param passengerName   Non empty, Unique string
+     * @param passengerNumber Non empty int
+     * @param currentBalance  Non negative
+     * @param type            one of the Three PassengerTypes
+     */
     public Passenger(String passengerName, int passengerNumber, double currentBalance, PassengerType type) {
         this.passengerName = passengerName;
         this.passengerNumber = passengerNumber;
@@ -28,6 +37,13 @@ public abstract class Passenger {
         enrolledTourPackage = null;
     }
 
+    /**
+     * Method to enroll Passenger in the passed TourPackage object, this will also add this passenger to the TourPackage's PassengerList.
+     * A passenger can enroll in at-max 1 TourPackage.
+     *
+     * @param tourPackage Non Null
+     * @return true, only if, not already enrolled in any package and the tourPackage object has space left to enroll.
+     */
     public boolean enrollInTourPackage(TourPackage tourPackage) {
         if (enrolledTourPackage == null && tourPackage.canAddPassenger(this)) {
             this.enrolledTourPackage = tourPackage;
@@ -37,6 +53,16 @@ public abstract class Passenger {
         return false;
     }
 
+    /**
+     * Method to enroll a passenger in the passed Activity object.
+     *
+     * @param activity Non null
+     * @throws IllegalArgumentException if<br>
+     *                                  1. passenger is not enrolled in any TourPackage<br>
+     *                                  2. passenger's enrolled TourPackage doesn't includes passed activity<br>
+     *                                  3. passed activity has reached max capacity<br>
+     *                                  4. passenger doesn't have sufficient balance<br>
+     */
     public void enrollInActivity(Activity activity) throws IllegalArgumentException {
         if (this.enrolledTourPackage == null)
             throw new IllegalArgumentException("Passenger is not enrolled in any tour package");
@@ -55,6 +81,13 @@ public abstract class Passenger {
         activity.addPassenger(this);
     }
 
+    /**
+     * Method to calculate minimum balance required to enroll in the passed activity.
+     * differs for each type of Passenger. use it to verify affordability.
+     *
+     * @param activity Non Null
+     * @return minimum balance required to enroll in the passed activity
+     */
     public double getCostOfActivity(Activity activity) {
         return 0;
     }
@@ -83,6 +116,11 @@ public abstract class Passenger {
         return passengerNumber;
     }
 
+    /**
+     * method to get a list of Activity's the passenger has enrolled in
+     *
+     * @return List of EnrolledActivities
+     */
     public List<Activity> getEnrolledActivities() {
         if (enrolledTourPackage == null) return new ArrayList<>();
 
@@ -107,6 +145,35 @@ public abstract class Passenger {
     @Override
     public int hashCode() {
         return Objects.hash(passengerName);
+    }
+
+    /**
+     * Print the details of an individual passenger including:
+     * - Name
+     * - Passenger number
+     * - Balance (if applicable)
+     * - List of each activity they have signed up for
+     * - Destination
+     * - Activity name
+     * - Price paid for the activity
+     */
+    public void printDetails() {
+        System.out.println("Passenger Details:");
+        System.out.println("Name: " + passengerName);
+        System.out.println("Passenger Number: " + passengerNumber);
+        System.out.println("Balance: Rs" + currentBalance);
+
+        List<Activity> enrolledActivities = getEnrolledActivities();
+        if (!enrolledActivities.isEmpty()) {
+            System.out.println("Enrolled Activities:");
+            for (Activity activity : enrolledActivities) {
+                System.out.println("  Destination: " + activity.getDestination().getDestinationName());
+                System.out.println("  Activity: " + activity.getActivityName());
+                System.out.println("  Price Paid: Rs" + getCostOfActivity(activity));
+            }
+        } else {
+            System.out.println("No Enrolled Activities");
+        }
     }
 
 }

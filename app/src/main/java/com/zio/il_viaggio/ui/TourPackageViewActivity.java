@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zio.il_viaggio.databinding.ActivityMainBinding;
+import com.zio.il_viaggio.databinding.TourpackageViewActivityBinding;
 import com.zio.il_viaggio.datamodels.Activity;
 import com.zio.il_viaggio.datamodels.Destination;
 import com.zio.il_viaggio.datamodels.GoldPassenger;
@@ -18,15 +18,16 @@ import com.zio.il_viaggio.datamodels.TourPackage;
 
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class TourPackageViewActivity extends AppCompatActivity {
 
 
-    ActivityMainBinding binding;
+    TourpackageViewActivityBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = TourpackageViewActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Destination destination1 = new Destination("Destination1");
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void open1(View view) {
-        startActivity(new Intent(this, MainActivity2.class));
+        startActivity(new Intent(this, PassengerViewActivity.class));
         finish();
     }
 }

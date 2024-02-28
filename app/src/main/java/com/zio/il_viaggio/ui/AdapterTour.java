@@ -33,11 +33,13 @@ public class AdapterTour extends RecyclerView.Adapter<AdapterTour.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdapterTour.ViewHolder holder, int position) {
 
-        holder.name.setText(tourPackageList.get(position).getPackageName());
-        holder.capacity.setText("Capacity : " + tourPackageList.get(position).getPassengerCapacity());
-        holder.enrolled.setText("Passengers Enrolled : " + tourPackageList.get(position).getPassengerList().size());
-        holder.recyclerView.setAdapter(new AdapterDestination(context, tourPackageList.get(position).getItinerary()));
-        holder.passengerView.setAdapter(new AdapterPassenger(context, tourPackageList.get(position).getPassengerList(), false));
+        TourPackage tourPackage = tourPackageList.get(position);
+
+        holder.name.setText(tourPackage.getPackageName());
+        holder.capacity.setText("Capacity : " + tourPackage.getPassengerCapacity());
+        holder.enrolled.setText("Passengers Enrolled : " + tourPackage.getPassengerList().size());
+        holder.destinationsView.setAdapter(new AdapterDestination(context, tourPackage.getItinerary()));
+        holder.passengerView.setAdapter(new AdapterPassenger(context, tourPackage.getPassengerList(), false));
     }
 
     @Override
@@ -48,14 +50,14 @@ public class AdapterTour extends RecyclerView.Adapter<AdapterTour.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, capacity, enrolled;
-        RecyclerView recyclerView, passengerView;
+        RecyclerView destinationsView, passengerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tourName);
             capacity = itemView.findViewById(R.id.tourCapacity);
             enrolled = itemView.findViewById(R.id.enrolled);
-            recyclerView = itemView.findViewById(R.id.destinationView);
+            destinationsView = itemView.findViewById(R.id.destinationView);
             passengerView = itemView.findViewById(R.id.passengerView);
         }
     }

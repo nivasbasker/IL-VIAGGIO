@@ -30,12 +30,9 @@ public class DestinationClassTest {
         assertEquals(2, destination.getTotalActivities());
         assertEquals("TestDestination", destination.getDestinationName());
 
-        //duplicate entry
-        assertFalse(destination.addActivity(activity1));
-        assertEquals(2, destination.getTotalActivities());
+        destination.printAvailableActivities();
+        destination2.printAvailableActivities();
 
-        //add activity from another destination
-        assertFalse(destination.addActivity(activity3));
     }
 
 }

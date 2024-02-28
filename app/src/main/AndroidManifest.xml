@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Ilviaggio"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity2"
+            android:name=".ui.PassengerViewActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.TourPackageViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -35,13 +35,15 @@ public class AdapterPassenger extends RecyclerView.Adapter<AdapterPassenger.View
     @Override
     public void onBindViewHolder(@NonNull AdapterPassenger.ViewHolder holder, int position) {
 
-        holder.name.setText(passengerList.get(position).getPassengerName());
-        holder.num.setText(String.valueOf(passengerList.get(position).getPassengerNumber()));
+        Passenger passenger = passengerList.get(position);
+
+        holder.name.setText(passenger.getPassengerName());
+        holder.num.setText(String.valueOf(passenger.getPassengerNumber()));
 
         if (type) {
-            holder.bal.setText("Balance : " + passengerList.get(position).getCurrentBalance());
-            holder.recyclerView.setAdapter(
-                    new AdapterActivity(context, passengerList.get(position).getEnrolledActivities(), passengerList.get(position)));
+            holder.bal.setText("Balance : " + passenger.getCurrentBalance());
+            holder.activitiesView.setAdapter(
+                    new AdapterActivity(context, passenger.getEnrolledActivities(), passenger));
         }
 
     }
@@ -54,14 +56,14 @@ public class AdapterPassenger extends RecyclerView.Adapter<AdapterPassenger.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, num, bal;
-        RecyclerView recyclerView;
+        RecyclerView activitiesView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.passName);
             num = itemView.findViewById(R.id.passNum);
             bal = itemView.findViewById(R.id.passBal);
-            recyclerView = itemView.findViewById(R.id.activityView);
+            activitiesView = itemView.findViewById(R.id.activityView);
 
         }
     }
