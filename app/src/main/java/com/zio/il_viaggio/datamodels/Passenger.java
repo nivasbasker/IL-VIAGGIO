@@ -92,10 +92,6 @@ public abstract class Passenger {
         return 0;
     }
 
-    void setCurrentBalance(double currentBalance) {
-        this.currentBalance = currentBalance;
-    }
-
     public String getPassengerName() {
         return passengerName;
     }
@@ -117,7 +113,7 @@ public abstract class Passenger {
     }
 
     /**
-     * method to get a list of Activity's the passenger has enrolled in
+     * Method to get a list of Activity's the passenger has enrolled in
      *
      * @return List of EnrolledActivities
      */
