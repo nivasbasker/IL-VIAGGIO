@@ -22,7 +22,7 @@ public class ActivityClassTest {
     Destination destination = new Destination("TestDestination");
     Activity activity = new Activity("TestActivity", destination, "TestDescription", 50.0, 1);
     GoldPassenger passenger = new GoldPassenger("p1", 987, 45);
-    PremiumPassenger passenger3 = new PremiumPassenger("p2", 987, 0);
+    PremiumPassenger passenger3 = new PremiumPassenger("p2", 987);
     StandardPassenger passenger2 = new StandardPassenger("p3", 987, 45);
 
     @Test

@@ -29,7 +29,7 @@ public class TourPackageTest {
     TourPackage tourPackage = new TourPackage("TestPackage", 3, itinerary);
 
     GoldPassenger passenger1 = new GoldPassenger("p1", 987, 45);
-    PremiumPassenger passenger3 = new PremiumPassenger("p2", 987, 0);
+    PremiumPassenger passenger3 = new PremiumPassenger("p2", 987);
     StandardPassenger passenger2 = new StandardPassenger("p3", 987, 45);
 
     @Test
@@ -44,7 +44,8 @@ public class TourPackageTest {
 
     }
 
-    @Test public void checkAndEnroll(){
+    @Test
+    public void checkAndEnroll() {
         //check possibility for passenger and enroll
         assertTrue(tourPackage.canAddPassenger(passenger1));
         assertTrue(passenger1.enrollInTourPackage(tourPackage));
@@ -60,7 +61,8 @@ public class TourPackageTest {
         assertFalse(tourPackage.canAddPassenger(passenger2));
     }
 
-    @Test public void CheckCapacity(){
+    @Test
+    public void CheckCapacity() {
         assertTrue(passenger1.enrollInTourPackage(tourPackage));
         assertTrue(passenger2.enrollInTourPackage(tourPackage));
 

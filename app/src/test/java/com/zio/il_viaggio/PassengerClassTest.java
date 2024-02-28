@@ -21,7 +21,7 @@ import java.util.List;
 public class PassengerClassTest {
 
     Passenger passenger1 = new GoldPassenger("p1", 987, 45);
-    PremiumPassenger passenger2 = new PremiumPassenger("p2", 987, 0);
+    PremiumPassenger passenger2 = new PremiumPassenger("p2", 987);
     StandardPassenger passenger3 = new StandardPassenger("p3", 987, 45);
 
     Destination destination = new Destination("TestDestination");

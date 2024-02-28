@@ -45,11 +45,11 @@ public class MainActivity2 extends AppCompatActivity {
         TourPackage tourPackage1 = new TourPackage("package1", 3, Arrays.asList(destination1, destination2, destination3));
         TourPackage tourPackage2 = new TourPackage("package2", 5, Arrays.asList(destination2, destination4));
 
-        Passenger passenger1 = new GoldPassenger("p1", 9857, 3210);
-        Passenger passenger2 = new GoldPassenger("p2", 9, 3500);
-        Passenger passenger3 = new PremiumPassenger("p3", 97, 0);
-        Passenger passenger4 = new StandardPassenger("p4", 887, 50);
-        Passenger passenger5 = new StandardPassenger("p5", 917, 4500);
+        Passenger passenger1 = new GoldPassenger("p1", 1001, 3210);
+        Passenger passenger2 = new GoldPassenger("p2", 1002, 3500);
+        Passenger passenger3 = new PremiumPassenger("p3", 1003);
+        Passenger passenger4 = new StandardPassenger("p4", 1004, 50);
+        Passenger passenger5 = new StandardPassenger("p5", 1005, 4500);
 
         //package 2
         passenger1.enrollInTourPackage(tourPackage2);

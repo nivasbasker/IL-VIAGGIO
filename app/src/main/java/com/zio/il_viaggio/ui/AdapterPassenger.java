@@ -39,8 +39,9 @@ public class AdapterPassenger extends RecyclerView.Adapter<AdapterPassenger.View
         holder.num.setText(String.valueOf(passengerList.get(position).getPassengerNumber()));
 
         if (type) {
+            holder.bal.setText("Balance : " + passengerList.get(position).getCurrentBalance());
             holder.recyclerView.setAdapter(
-                    new AdapterActivity(context, passengerList.get(position).getEnrolledActivities(), false));
+                    new AdapterActivity(context, passengerList.get(position).getEnrolledActivities(), passengerList.get(position)));
         }
 
     }
@@ -52,13 +53,14 @@ public class AdapterPassenger extends RecyclerView.Adapter<AdapterPassenger.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, num;
+        TextView name, num, bal;
         RecyclerView recyclerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.passName);
             num = itemView.findViewById(R.id.passNum);
+            bal = itemView.findViewById(R.id.passBal);
             recyclerView = itemView.findViewById(R.id.activityView);
 
         }

@@ -3,16 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/d_card"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tourName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tourName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/tourCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/destinationView"
@@ -22,10 +35,11 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <TextView
+        android:id="@+id/enrolled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Passengers already enrolled"
+        android:text="Passengers enrolled"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -33,7 +47,6 @@
         android:id="@+id/passengerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/d_card"
         android:padding="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

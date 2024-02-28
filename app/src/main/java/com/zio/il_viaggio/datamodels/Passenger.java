@@ -15,12 +15,12 @@ public abstract class Passenger {
     }
 
     protected final String passengerName;
-    protected final double passengerNumber;
+    protected final int passengerNumber;
     protected final PassengerType type;
     protected double currentBalance;
     protected TourPackage enrolledTourPackage;
 
-    public Passenger(String passengerName, double passengerNumber, double currentBalance, PassengerType type) {
+    public Passenger(String passengerName, int passengerNumber, double currentBalance, PassengerType type) {
         this.passengerName = passengerName;
         this.passengerNumber = passengerNumber;
         this.currentBalance = currentBalance;
@@ -46,6 +46,17 @@ public abstract class Passenger {
 
         if (!activity.canAddPassenger(this))
             throw new IllegalArgumentException("Unable to enroll in the activity. No seat left or already enrolled.");
+
+        double cost = getCostOfActivity(activity);
+        if (currentBalance < cost)
+            throw new IllegalArgumentException("Insufficient balance to enroll in the activity");
+
+        currentBalance -= cost;
+        activity.addPassenger(this);
+    }
+
+    public double getCostOfActivity(Activity activity) {
+        return 0;
     }
 
     void setCurrentBalance(double currentBalance) {
@@ -68,7 +79,7 @@ public abstract class Passenger {
         return enrolledTourPackage;
     }
 
-    public double getPassengerNumber() {
+    public int getPassengerNumber() {
         return passengerNumber;
     }
 
